@@ -41,8 +41,8 @@ void insertFront(char name[], int rollNo, char course[], int marks) {
     printf("Record inserted at the front of the list.\n");
 }
 
-// Function to delete a student record from the rear of the list
-void deleteBack() {
+// Function to delete the last node of the list
+void deleteLastNode() {
     if (head == NULL) {
         printf("List is empty. No record to delete.\n");
         return;
@@ -63,7 +63,18 @@ void deleteBack() {
     }
 
     free(current);
-    printf("Record deleted from the rear of the list.\n");
+    printf("Last node deleted from the list.\n");
+}
+
+// Function to display the first student record
+void showFirstRecord() {
+    if (head == NULL) {
+        printf("List is empty. No records to display.\n");
+        return;
+    }
+
+    printf("First Student Record:\n");
+    printf("Name: %s, Roll No.: %d, Course: %s, Marks: %d\n", head->name, head->rollNo, head->course, head->marks);
 }
 
 // Function to display all student records
@@ -136,12 +147,12 @@ int main() {
 
     while (1) {
         printf("\nStudent Record Management System\n");
-        printf("1. Insert from front\n");
-        printf("2. Delete from rear\n");
-        printf("3. Show records from first node\n");
-        printf("4. Search record at position\n");
-        printf("5. Update node\n");
-        printf("6. Display linked list\n");
+        printf("1. Insert record\n");
+        printf("2. Delete record\n");
+        printf("3. Show first record\n");
+        printf("4. Search record\n");
+        printf("5. Update record\n");
+        printf("6. Display record\n");
         printf("7. Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
@@ -159,10 +170,10 @@ int main() {
                 insertFront(name, rollNo, course, marks);
                 break;
             case 2:
-                deleteBack();
+                deleteLastNode();
                 break;
             case 3:
-                displayRecords();
+                showFirstRecord();
                 break;
             case 4:
                 printf("Enter position to search: ");
@@ -176,7 +187,7 @@ int main() {
                 scanf("%s", name);
                 printf("Enter new roll no.: ");
                 scanf("%d", &rollNo);
-                printf("Enter new course (CSE, AIML, DS, IT, ECE): ");
+                printf("Enter new course (CSE/AIML/DS/IT/ECE): ");
                 scanf("%s", course);
                 printf("Enter new marks: ");
                 scanf("%d", &marks);
